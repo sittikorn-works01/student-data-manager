@@ -1,0 +1,22 @@
+## --------- BUILD OUTPUTS ---------
+# Ignore folders where C# compiles your code into executable files
+[Bb]in/
+[Oo]bj/
+
+## --------- IDE & TOOLS ---------
+# Ignore Visual Studio's hidden workspace configuration folder
+.vs/
+# Ignore your personal layout/window settings in the editor
+*.user
+*.suo
+
+## --------- DATABASES (SQLite) ---------
+# Ignore your local SQLite database file and its temporary crash-recovery logs
+*.db
+*.db-wal
+*.db-shm
+
+## --------- OS FILES ---------
+# Ignore background files created by Windows or Mac file systems
+Thumbs.db
+.DS_Store
