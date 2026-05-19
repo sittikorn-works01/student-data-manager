@@ -31,19 +31,12 @@
                 <td><a class="btn btn-warning"
                 asp-controller="Student" asp-action="Edit" 
                 asp-route-id="@student.Id">แก้ไข</a></td>
-                <td><a class="btn btn-danger">ลบ</a></td>
+                <td><a class="btn btn-danger"
+                asp-controller="Student" asp-action="Delete" 
+                asp-route-id="@student.Id" onclick="return confirm('คุณยืนยันที่จะลบข้อมูลของ @student.FirstName @student.LastName หรือไม่?')">ลบ</a></td>
             }
         </tr>
     </tbody>
 </table>
-@* @foreach(var student in Model)
-{
-    <p>@student.StudentId</p>
-    <p>@student.Honorifics</p>
-    <p>@student.FirstName</p>
-    <p>@student.LastName</p>
-    <p>@student.DateOfBirth</p>
-    <p>@student.Faculty</p>
-    <br />
-} *@
+
 
