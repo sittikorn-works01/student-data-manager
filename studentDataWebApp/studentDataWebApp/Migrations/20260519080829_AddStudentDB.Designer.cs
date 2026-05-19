@@ -12,8 +12,8 @@ using studentDataWebApp.Data;
 namespace studentDataWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20260518101857_addStudentDB")]
-    partial class addStudentDB
+    [Migration("20260519080829_AddStudentDB")]
+    partial class AddStudentDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,6 +49,10 @@ namespace studentDataWebApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StudentId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
