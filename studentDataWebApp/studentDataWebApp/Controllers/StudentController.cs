@@ -1,5 +1,4 @@
-﻿using System.Net.Mime;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using studentDataWebApp.Data;
 using studentDataWebApp.Models;
 
@@ -12,10 +11,23 @@ namespace studentDataWebApp.Controllers
         {
             this._db = db;
         }
-        public IActionResult Index()
+        //public IActionResult Index()
+        //{
+        //    IEnumerable<Student> allStudent = _db.Students;
+        //    return View(allStudent);
+        //}
+
+        public IActionResult Index(string searchString)
         {
-            IEnumerable<Student> allStudent = _db.Students;
-            return View(allStudent);
+            var students = _db.Students.AsQueryable();
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.StudentId.Contains(searchString)
+                                            || s.FirstName.Contains(searchString)
+                                            || s.LastName.Contains(searchString));
+            }
+            ViewData["CurrentFilter"] = searchString;
+            return View(students.ToList());
         }
 
         public IActionResult Create()
