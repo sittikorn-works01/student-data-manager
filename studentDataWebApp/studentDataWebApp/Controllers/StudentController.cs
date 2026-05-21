@@ -64,7 +64,7 @@ namespace studentDataWebApp.Controllers
                 return NotFound();
             }
             
-            
+            ViewBag.FacultyId = new SelectList(_db.Faculties, "Id", "FacultyName");
             var obj = _db.Students.Find(id);
             if (obj == null)
             {
