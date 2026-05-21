@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using studentDataWebApp.Data;
 using studentDataWebApp.Models;
 
@@ -16,24 +18,32 @@ namespace studentDataWebApp.Controllers
         //    IEnumerable<Student> allStudent = _db.Students;
         //    return View(allStudent);
         //}
+        public IActionResult Create()
+        {
+            ViewBag.FacultyId = new SelectList(_db.Faculties, "Id", "FacultyName");
+            return View();
+        }
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
 
         public IActionResult Index(string searchString)
         {
-            var students = _db.Students.AsQueryable();
+            var students = _db.Students.Include(s => s.Faculty).AsQueryable();
+
             if (!string.IsNullOrEmpty(searchString))
             {
                 students = students.Where(s => s.StudentId.Contains(searchString)
                                             || s.FirstName.Contains(searchString)
                                             || s.LastName.Contains(searchString));
             }
+
             ViewData["CurrentFilter"] = searchString;
             return View(students.ToList());
         }
 
-        public IActionResult Create()
-        {
-            return View();
-        }   
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]

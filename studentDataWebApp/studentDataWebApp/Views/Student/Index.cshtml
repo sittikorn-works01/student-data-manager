@@ -41,7 +41,7 @@
                     <td>@student.FirstName</td>
                     <td>@student.LastName</td>
                     <td>@student.DateOfBirth</td>
-                    <td>@student.Faculty</td>
+                    <td>@student.Faculty?.FacultyName</td>
                     <td>
                         <a class="btn btn-warning"
                            asp-controller="Student" asp-action="Edit"

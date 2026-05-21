@@ -31,9 +31,9 @@
         <span asp-validation-for="DateOfBirth" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Faculty"></label>
-        <input type="text" asp-for="Faculty" class="form-control" />
-        <span asp-validation-for="Faculty" class="text-danger"></span>
+        <label asp-for="FacultyId"></label>
+        <select asp-for="FacultyId" class="form-control" asp-items="ViewBag.FacultyId"></select>
+        <span asp-validation-for="FacultyId" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary my-2">บันทึก</button>
  </form>
