@@ -37,6 +37,28 @@ namespace studentDataWebApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Faculties");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FacultyName = "สำนักวิชาแพทยศาสตร์"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            FacultyName = "สำนักวิชาวิศวกรรมศาสตร์และเทคโนโลยี"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            FacultyName = "สำนักวิชาสารสนเทศศาสตร์"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            FacultyName = "สำนักวิชาศึกษาศาสตร์"
+                        });
                 });
 
             modelBuilder.Entity("studentDataWebApp.Models.Student", b =>
