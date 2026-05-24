@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using studentDataWebApp.Data;
 
@@ -11,9 +12,11 @@ using studentDataWebApp.Data;
 namespace studentDataWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20260520135533_AddFacultyTable")]
+    partial class AddFacultyTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,28 +40,6 @@ namespace studentDataWebApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Faculties");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            FacultyName = "สำนักวิชาแพทยศาสตร์"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            FacultyName = "สำนักวิชาวิศวกรรมศาสตร์และเทคโนโลยี"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            FacultyName = "สำนักวิชาสารสนเทศศาสตร์"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            FacultyName = "สำนักวิชาศึกษาศาสตร์"
-                        });
                 });
 
             modelBuilder.Entity("studentDataWebApp.Models.Student", b =>
