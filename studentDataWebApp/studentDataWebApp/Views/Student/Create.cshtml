@@ -1,0 +1,41 @@
+@model Student;
+@{
+    ViewData["Title"] = "บันทึกข้อมูลนักศึกษา";
+}
+<h1>บันทึกข้อมูลนักศึกษา</h1>
+ <form method="POST"  asp-controller="Student" asp-action="Create">
+    <div class="form-group">
+        <label asp-for="StudentId"></label>
+        <input type="number" asp-for="StudentId" class="form-control" />
+        <span asp-validation-for="StudentId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Honorifics"></label>
+        <input type="text" asp-for="Honorifics" class="form-control" />
+        <span asp-validation-for="Honorifics" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FirstName"></label>
+        <input type="text" asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName"></label>
+        <input type="text" asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DateOfBirth"></label>
+        <input type="date" asp-for="DateOfBirth" class="form-control" />
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FacultyId"></label>
+        <select asp-for="FacultyId" class="form-control" asp-items="ViewBag.FacultyId">
+            <option value="">-- เลือกสำนักวิชา --</option>
+        </select>
+        <span asp-validation-for="FacultyId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary my-2">บันทึก</button>
+ </form>

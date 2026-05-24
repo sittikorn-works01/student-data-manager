@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Student>;
+@{
+ ViewData["Title"] = "หน้าแรก";
+}   
+
+<h1>หน้าแรก</h1>
+<form asp-action="Index" method="get" class="mb-3">
+    <div class="input-group">
+        <input type="text"
+               name="searchString"
+               value="@ViewData["CurrentFilter"]"
+               class="form-control"
+               placeholder="ค้นหาด้วย รหัสนักศึกษา, ชื่อ หรือนามสกุล..." />
+        
+        <button type="submit" class="btn btn-primary">ค้นหา</button>
+        
+        <a asp-action="Index" class="btn btn-secondary">ล้างการค้นหา</a>
+    </div>
+</form>
+@if(Model.Count() > 0){   
+    <table class="table">
+        <thead>
+            <tr>
+                <th>รหัสนักศึกษา</th>
+                <th>คำนำหน้า</th>
+                <th>ชื่อ</th>
+                <th>นามสกุล</th>
+                <th>วันเดือนปีเกิด</th>
+                <th>สำนักวิชา</th>
+                <th>แก้ไข</th>
+                <th>ลบ</th>
+             </tr>       
+         </thead>
+         <tbody>             
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.StudentId</td>
+                    <td>@student.Honorifics</td>
+                    <td>@student.FirstName</td>
+                    <td>@student.LastName</td>
+                    <td>@student.DateOfBirth</td>
+                    <td>@student.Faculty?.FacultyName</td>
+                    <td>
+                        <a class="btn btn-warning"
+                           asp-controller="Student" asp-action="Edit"
+                           asp-route-id="@student.Id">แก้ไข</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger"
+                           asp-controller="Student" asp-action="Delete"
+                           asp-route-id="@student.Id" onclick="return confirm('คุณยืนยันที่จะลบข้อมูลของ @student.FirstName @student.LastName หรือไม่?')">ลบ</a>
+                    </td>
+                </tr>
+            }  
+                          
+         </tbody>
+    </table>
+    }else
+    {
+        <div class="alert alert-secondary">ไม่มีข้อมูลนักศึกษา</div>
+    }
+
+
+
