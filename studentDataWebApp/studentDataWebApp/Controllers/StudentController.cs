@@ -84,6 +84,7 @@ namespace studentDataWebApp.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.FacultyId = new SelectList(_db.Faculties, "Id", "FacultyName");
             return View(editedStudent);
         }
 
