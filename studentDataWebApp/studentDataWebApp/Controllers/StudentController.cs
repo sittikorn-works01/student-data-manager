@@ -37,10 +37,17 @@ namespace studentDataWebApp.Controllers
         }
 
         public IActionResult Edit(int? id) {
-            if (id == null || id == 0) return NotFound();
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            
             
             var obj = _db.Students.Find(id);
-            if (obj == null) return NotFound();
+            if (obj == null)
+            {
+                return NotFound();
+            }
             return View(obj);
         }
 
@@ -56,5 +63,21 @@ namespace studentDataWebApp.Controllers
             }
             return View(editedStudent);
         }
+
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0) {
+                return NotFound();
+            } 
+
+            var obj = _db.Students.Find(id);
+            if (obj == null) {
+                return NotFound();
+            } 
+            _db.Students.Remove(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }
