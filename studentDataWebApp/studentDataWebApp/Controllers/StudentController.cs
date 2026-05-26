@@ -13,20 +13,15 @@ namespace studentDataWebApp.Controllers
         {
             this._db = db;
         }
-        //public IActionResult Index()
-        //{
-        //    IEnumerable<Student> allStudent = _db.Students;
-        //    return View(allStudent);
-        //}
-        public IActionResult Create()
+        private void LoadFaculties()
         {
             ViewBag.FacultyId = new SelectList(_db.Faculties, "Id", "FacultyName");
+        }
+        public IActionResult Create()
+        {
+            LoadFaculties();
             return View();
         }
-        //public IActionResult Create()
-        //{
-        //    return View();
-        //}
 
         public IActionResult Index(string searchString)
         {
@@ -55,7 +50,7 @@ namespace studentDataWebApp.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FacultyId = new SelectList(_db.Faculties, "Id", "FacultyName");
+            LoadFaculties();
             return View(newStudent);            
         }
 
@@ -84,7 +79,7 @@ namespace studentDataWebApp.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FacultyId = new SelectList(_db.Faculties, "Id", "FacultyName");
+            LoadFaculties();
             return View(editedStudent);
         }
 
