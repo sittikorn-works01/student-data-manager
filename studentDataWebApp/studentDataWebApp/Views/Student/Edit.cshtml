@@ -10,9 +10,10 @@
         <span asp-validation-for="StudentId" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Honorifics"></label>
-        <input type="text" asp-for="Honorifics" class="form-control" />
-        <span asp-validation-for="Honorifics" class="text-danger"></span>
+        <label asp-for="Title"></label>
+        <select asp-for="Title" asp-items="Html.GetEnumSelectList<Student.Honorific>()" class="form-control">
+        </select>
+        <span asp-validation-for="Title" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="FirstName"></label>
