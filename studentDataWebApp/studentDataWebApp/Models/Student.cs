@@ -5,15 +5,6 @@ namespace studentDataWebApp.Models
 {
     public class Student
     {
-        public enum Honorific
-        {
-            [Display(Name = "นาย")] นาย,
-            [Display(Name = "นาง")] นาง,
-            [Display(Name = "นางสาว")] นางสาว,
-            [Display(Name = "เด็กชาย")] เด็กชาย,
-            [Display(Name = "เด็กหญิง")] เด็กหญิง
-        }
-
         public int Id { get; set; }
 
         [Required(ErrorMessage = "กรุณาป้อนรหัสนักศึกษา")]
@@ -40,7 +31,6 @@ namespace studentDataWebApp.Models
 
         [Required(ErrorMessage = "กรุณาป้อนสำนักวิชา")]
         [DisplayName("สำนักวิชา")]
-        //public string Faculty { get; set; }
         public int? FacultyId { get; set; }
         public Faculty? Faculty { get; set; }
     }
