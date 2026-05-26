@@ -11,7 +11,7 @@
     </div>
     <div class="form-group">
         <label asp-for="Title"></label>
-        <select asp-for="Title" asp-items="Html.GetEnumSelectList<Student.Honorific>()" class="form-control">
+        <select asp-for="Title" asp-items="Html.GetEnumSelectList<Honorific>()" class="form-control">
         </select>
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
